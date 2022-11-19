@@ -1,0 +1,24 @@
+// 1.变量的用法
+// 2.嵌套（怎么取父级）
+// 3.import
+// 4. mixin（传参和不传参）
+// 5. 继承
+$global-color: yellow;
+
+@mixin font-layout {
+    color: blue;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+@mixin font-layout-cus($color, $font-size, $font-wight) {
+    color: $color;
+    font-size: $font-size;
+    font-weight: $font-wight;
+}
+
+%able-to-extends {
+    color: blue;
+    font-size: 60px;
+    font-weight: bolder;
+}
