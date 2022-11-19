@@ -1,0 +1,17 @@
+{
+  "name": "first-pkg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo hello world",
+    "v": "sass --version",
+    "s": "sass src/index.scss out/index.css",
+    "watch": "sass --watch src/index.scss out/index.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.56.1"
+  }
+}
