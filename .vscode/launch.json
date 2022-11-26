@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\src\\js\\01.js"
+            "program": "${workspaceFolder}\\src\\js\\callback\\closure.js"
         }
     ]
 }
