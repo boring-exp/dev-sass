@@ -18,3 +18,14 @@ simpleChild.__proto__ = parent.prototype
 
 simpleChild.getMoney()
 console.log(simpleChild)
+
+// golang
+// 函数式 + 组合的方式
+
+const annimal = {
+
+}
+
+function walk(annimal) {
+    xxxxxx(annimal)
+}
