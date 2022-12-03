@@ -6,24 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
     <!--http请求-->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        const appCode = 'e67569a8e9b14afcad2937a9d6774cea'
-        axios({
-            method: 'post',
-            url: `http://tianqimore.market.alicloudapi.com/weather?AppCode=${appCode}`,
-            data: {
-                src: 'hebei'
-            }
-        }).then((res) => {
-            console.log(res)
-        }).catch(error => {
-            console.log(error)
-        })
+        function createAxiosTask(city) {
+            const result = axios({
+                headers: {
+                    Authorization: `APPCODE e36e4f85632f48d8bf3a4b12e260877e`
+                },
+                method: 'get',
+                url: `http://jisutqybmf.market.alicloudapi.com/weather/query`,
+                params: {
+                    city,
+                }
+            })
+            return result;
+        }
+
+        const asyncTask = [createAxiosTask('镇江'), createAxiosTask('长春'), createAxiosTask('乌鲁木齐')]
+
+        // promise all 必须所有的都fulfill，凡是有一个reject，直接reject
+        // Promise.allSettled(asyncTask).then((asyncTaskResult) => console.log(asyncTaskResult))
+        // 实现执行完，就返回谁
+        // Promise.race(asyncTask).then((res) => console.log(res))
+
+        // 序列化
+        // createAxiosTask('镇江')
+        //     .then((res) => {    
+        //         console.log(res)
+        //         return createAxiosTask('长春')
+        //     }).then((res) => {
+        //         console.log(res)
+        //         return createAxiosTask('乌鲁木齐')
+        //     }).then((res) => console.log(res))
+
+        // 是一个resolve的值的数组
+        function myselfPromiseAll(proTask) {
+            const result = []
+
+            return new Promise((resolve, reject) => {
+                proTask.forEach(promise => {
+                    promise.then((res) => {
+                        result.push(res)
+                        // 判断result数组长度是否和proTask数据长度一直
+                        if (result.length === proTask.length) {
+                            resolve(result)
+                        }
+                    })
+                });
+            })
+        }
+
+        myselfPromiseAll(asyncTask).then(res => console.log(res))
     </script>
 </body>
 
