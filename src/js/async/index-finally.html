@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <!--http请求-->
+    <script>
+        async function requestWeatherInfo(city) {
+            const result = await axios({
+                headers: {
+                    Authorization: `APPCODE e36e4f85632f48d8bf3a4b12e260877e`
+                },
+                method: 'get',
+                url: `http://jisutqybmf.market.alicloudapi.com/weather/query`,
+                params: {
+                    city,
+                }
+            })
+            console.log(result)
+            return result
+        }
+        // 同步的
+        async function main() {
+            const a = await requestWeatherInfo('镇江') // promise
+            console.log(a)
+            return 1;
+        }
+
+        // loading...
+        // const final = await main();
+    </script>
+</body>
+
+</html>
