@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--http请求-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const appCode = 'e67569a8e9b14afcad2937a9d6774cea'
+        axios({
+            method: 'post',
+            url: `http://tianqimore.market.alicloudapi.com/weather?AppCode=${appCode}`,
+            data: {
+                src: 'hebei'
+            }
+        }).then((res) => {
+            console.log(res)
+        }).catch(error => {
+            console.log(error)
+        })
+    </script>
+</body>
+
+</html>
